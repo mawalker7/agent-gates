@@ -39,7 +39,7 @@ The one rule I hold tightest: invoking any skip or bypass needs approval *before
 
 These are real, dated, and reduced to mechanism. Names are omitted on purpose.
 
-*A harness that reported a verdict it couldn't read.* A mutation-testing script applied fifteen single-line mutations and reported that all fifteen survived. The runner wrote its summary to standard error; the script captured standard output only; the regex matched nothing; "nothing found" defaulted to zero failures. It was caught because an identical result across unrelated mutations was treated as a deviation to explain before being believed. The rule that came out of it: a harness that can't parse its runner's output must report *unreadable*, never a pass.
+*A harness that reported a verdict it couldn't read.* A test harness ran a batch of deliberate code mutations and reported that every one of them survived, which would mean the test suite caught nothing. The real cause was the harness itself: it was reading its runner's results from the wrong output stream, matched nothing, and treated "nothing found" as zero failures. It was caught because an identical result across unrelated mutations was treated as a deviation to explain before being believed. The rule that came out of it: a harness that can't parse its runner's output must report *unreadable*, never a pass.
 
 *A scheduled job that succeeded for nine weeks while delivering nothing.* Its delivery path was blocked by an egress policy that returned a refusal the job never surfaced, so every run logged success. A person reading the actual log, instead of trusting the status, found it. When a job reports success and the side effect is missing, read the log before theorizing.
 
